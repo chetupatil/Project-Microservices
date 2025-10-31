@@ -11,5 +11,8 @@ public interface CustomerService {
 	public List<CustomerResponseDto> fetchAllCustomers();
 	
 	public CustomerResponseDto createNewCustomer(CustomerRequestDto custDto);
+	
+	
+	public Integer addTwo(Integer a, Integer b);
 
 }

@@ -2,6 +2,9 @@ package com.customer_service.customer_service.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -35,6 +38,14 @@ public class CustomerServiceImp implements CustomerService {
 		List<CustomerResponseDto> customers = new ArrayList<>();
 		try {
 			List<CustomerModel> custModel = custRepo.findAll();
+	
+			//Function<CustomerModel,CustomerModel> f = t -> t.setCountry(t.getCountry().toUpperCase());
+			
+			
+			custModel = custModel.stream()
+					.filter(t -> t.getCountry().equals("Australia"))
+					.collect(Collectors.toList());
+			
 
 			if(!CollectionUtils.isEmpty(custModel)) {
 				for(CustomerModel cust : custModel) {
@@ -55,6 +66,8 @@ public class CustomerServiceImp implements CustomerService {
 					customers.add(customer);
 				}
 			}
+			
+			
 
 
 		}catch(Exception e) {
@@ -85,11 +98,9 @@ public class CustomerServiceImp implements CustomerService {
 //			model.setState(custDto.getState());
 //			CustomerModel modelRes = custRepo.save(model);
 			CustomerModel modelRes = new CustomerModel();
-			if(modelRes!=null) {
-				String message = " Created new customer : ";
-				notifyToCustomerUsingKafka(message);
-				
-			}
+			if(modelRes!=null) {}
+			String message = " Created new customer : ";
+			notifyToCustomerUsingKafka(message);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -98,5 +109,14 @@ public class CustomerServiceImp implements CustomerService {
 	
 	public void notifyToCustomerUsingKafka(String message) {
 		kafkaTemplate.send(topicName,message,message);
+	}
+
+
+	@Override
+	public Integer addTwo(Integer a, Integer b) {
+		if(a==0 && b==0) {
+			throw new IllegalArgumentException("Invalid parameter, both parameter should be valid value.");
+		}
+		return a + b;
 	}
 }

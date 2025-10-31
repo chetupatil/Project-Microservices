@@ -9,7 +9,6 @@ public class NotificationServiceImpl {
 	
 	@KafkaListener(topics="cust-prod-topic",groupId="group_id")
 	public void consumeCustomerNotification(String message) {
-		
 		System.out.println("message : "+message);
 	}
 	
