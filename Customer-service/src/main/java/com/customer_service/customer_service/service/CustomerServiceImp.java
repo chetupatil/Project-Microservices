@@ -15,6 +15,8 @@ import com.customer_service.customer_service.dto.request.CustomerRequestDto;
 import com.customer_service.customer_service.dto.response.CustomerResponseDto;
 import com.customer_service.customer_service.model.CustomerModel;
 import com.customer_service.customer_service.repository.CustomerRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.beans.factory.annotation.Value;
 
 
@@ -82,6 +84,7 @@ public class CustomerServiceImp implements CustomerService {
 	public CustomerResponseDto createNewCustomer(CustomerRequestDto custDto) {
 		CustomerResponseDto resDto = new CustomerResponseDto();
 		try {
+			ObjectMapper objectMapper = new ObjectMapper();
 //			CustomerModel model = new CustomerModel();
 //			model.setAddressLine1(custDto.getAddressLine1());
 //			model.setAddressLine2(custDto.getAddressLine2());
@@ -99,7 +102,7 @@ public class CustomerServiceImp implements CustomerService {
 //			CustomerModel modelRes = custRepo.save(model);
 			CustomerModel modelRes = new CustomerModel();
 			if(modelRes!=null) {}
-			String message = " Created new customer : ";
+			String message = " Created new customer : "+objectMapper.writeValueAsString(custDto);
 			notifyToCustomerUsingKafka(message);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
