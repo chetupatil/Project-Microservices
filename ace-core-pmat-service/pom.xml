@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>ACENG.ACENGNOKACEAUTAUT.com.nokia.ace.core</groupId>
+    <artifactId>ace-core</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>ACENG.ACENGNOKACEAUTAUT.com.nokia.ace.core.pmat</groupId>
+  <artifactId>ace-core-pmat-service</artifactId>
+  <name>ace-core-pmat-service</name>
+  <description>Ace Core Pmat Service</description>
+  <packaging>jar</packaging>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<drools.version>6.4.0.Final</drools.version>
+	</properties>
+	<dependencies>
+	<dependency>
+			<groupId>ACENG.ACENGNOKACEAUTAUT.com.nokia.ace.core.commons</groupId>
+			<artifactId>ace-core-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+		<dependency>
+			<groupId>ACENG.ACENGNOKACEAUTAUT.com.nokia.ace.connector.common</groupId>
+			<artifactId>ace-connectors-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ACENG.ACENGNOKACEAUTAUT.com.nokia.ace.core.project.data</groupId>
+			<artifactId>ace-core-project-data</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>
