@@ -1,0 +1,32 @@
+config:
+  serviceType: TCG
+  verID: 01
+  productRelease: 12
+  description: ""
+  email: ""
+  orgID: "NSWPS"
+  domainID: DIGIN
+  solnID: SOL
+  productHierarchy: ""
+  servicesBLHierarchy: ""
+  supportUrls:
+    - ""
+    - ""
+  reusable: FALSE
+projectInfo:
+  baseCode: ""
+infra:
+  toolRequired: YES
+  deploymentType: G
+  persistentDays: 7
+  tool: vlab
+  ncrt:
+      ciqLocation: "/Deployment/VLAB/workflows/ncrt"
+  cloudbandStack:
+      cbamVersion: 18.5
+      cbndVersion: 19
+      cbisVersion: 18.5
+  productRelease:
+      vnfdPath: "/Deployment/VLAB/workflows/vnfdPath"
+      qcow2ImagePath: "/Deployment/VLAB/workflows/imagePath"
+      nsdPath: "/Deployment/VLAB/workflows/nsdPath"

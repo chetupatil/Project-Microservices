@@ -1,0 +1,206 @@
+config:
+      serviceType: TCG
+  verID: 01
+  productRelease: 12
+  description: ""
+  email: ""
+  orgID: "NSWPS"
+  domainID: DIGIN
+  solnID: SOL
+  productHierarchy: ""
+  servicesBLHierarchy: ""
+  supportUrls:
+    - ""
+    - ""
+  reusable: FALSE
+projectInfo:
+  baseCode: ""
+alm:
+  reusabilityLevel: null
+  roles:
+    - ProjectLead
+    - Developers
+  tool: jira
+  backlog:
+  - operation: '' 
+    issueId: 6
+    jiraIssueID: 
+    issueType: Test
+    epicName: 
+    summary: ''
+    labels:
+    releaseLink: ''
+    description: ''
+    epicLink: ''
+    priority: ''
+    issueLink: ''
+    parentId: ''
+    component: ''
+    labelID: ''
+    originalEstimate: ''
+    assignee: ''
+    testCaseId: ''
+    testTag: ''
+    testFrameWork: ''
+    market: ''
+    deliveryCenter: ''
+    deliveryManager: '' 
+    productRelease: ''
+    caseType: ''
+    siteName: ''
+    phase: ''
+    projectManager: ''
+    solutionArea: ''
+    opportunityNumber: ''
+    projectStatus: ''
+    subDomain: ''
+    projectProgress: ''
+    careHandover: ''
+    automation: ''
+    escalation: ''
+    customer: ''
+  - operation: '' 
+    issueId: 7
+    jiraIssueID: 
+    issueType: Test
+    epicName: 
+    summary: ''
+    labels:
+    releaseLink: ''
+    description: ''
+    epicLink: 1
+    priority: ''
+    issueLink: 1
+    parentId: 1
+    component: ''
+    labelID: ''
+    originalEstimate: ''
+    assignee: ''
+    testCaseId: ''
+    testTag: ''
+    testFrameWork: ''
+    market: ''
+    deliveryCenter: ''
+    deliveryManager: '' 
+    productRelease: ''
+    caseType: ''
+    siteName: ''
+    phase: ''
+    projectManager: ''
+    solutionArea: ''
+    opportunityNumber: ''
+    projectStatus: ''
+    subDomain: ''
+    projectProgress: ''
+    careHandover: ''
+    automation: ''
+    escalation: ''
+    customer: ''
+  typeID: ""
+  namespaceID: ""
+scm:
+  toolRequired: YESSS
+  reusabilityLevel: Reusability at Product Level
+  gerrit: 
+      tool: gerrit
+      roles:
+        - Developers
+        - Config_Mgmt
+        - Read-Only
+        - Reviewers
+      defaultRoles:
+        - Config-Mgmt: gdcgerritservice,cloud-jenkins
+        - Developers: null
+        - Read-Only: null
+        - Reviewers: null
+      repository:
+        references:
+          - name: refs/*
+            owner:
+              - "Config-Mgmt"
+            read:
+              - "Read-Onlys"
+          - name: refs/for/*
+            read:
+              - "Config-Mgmt"
+            push:
+              - "Config-Mgmt"
+            labelCodeReview:
+              - "Reviewers"
+          - name: refs/for/refs/*
+            push:
+              - "Developers"
+            pushMerge:
+              - "Developers"
+          - name: refs/heads/*
+            read:
+              - "Config-Mgmt"
+            push:
+              - "Config-Mgmt"
+            labelCodeReview:
+              - "Developers"
+          - name: refs/meta/config
+            read:
+              - "Developers"
+  gitlab:
+      tool: Gitlab
+      roles:
+        - Developers
+        - Admin
+        - Maintainer
+        - Guest/Reporter
+ci:
+  toolRequired: YES
+  reusabilityLevel: NULL
+  roles:
+    -  PipelineUsers
+    -  Promote 
+    -  buildonly
+    -  readWrite
+  jobs:
+      - jobName: NB
+        filePath: Jenkinsfile_nb
+        trigger: H 12 * * *
+        branch: master
+      - jobName: NB
+        filePath: Jenkinsfile_nb
+        trigger: H 12 * * *
+        branch: master  
+  credentialID: nswps-gerrit
+brm:
+  toolRequired: YES
+  tool: Artifactory 
+  credentialID: ""
+  puname: "NSWPS"
+  buildType: 
+  artifactFolder: 
+  pattern: 
+ide:
+  toolRequired: YES
+  tool: eclipse_che
+  stack: 'eclipse/ubuntu_python:latest'
+  project_description: IDE provides python on Ubuntu
+  project_type: python
+  namespace: NSWPS-ACE
+  description: Linux env 
+ct:
+  toolRequired: YES
+  testArtifactRepo: ''
+  testFrameWork: ''
+  dockerImage: ''
+  tool: cctf      
+infra:
+  toolRequired: YES
+  deploymentType: G
+  persistentDays: 1
+  tool: vlab
+  ncrt:
+      ciqLocation: "/Deployment/VLAB/workflows/ncrt"
+  cloudbandStack:
+      cbamVersion: 18.5
+      cbndVersion: 19
+      cbisVersion: 18.5
+  productRelease:
+      vnfdPath: "/Deployment/VLAB/workflows/vnfdPath"
+      qcow2ImagePath: "/Deployment/VLAB/workflows/imagePath"
+      nsdPath: "/Deployment/VLAB/workflows/nsdPath"

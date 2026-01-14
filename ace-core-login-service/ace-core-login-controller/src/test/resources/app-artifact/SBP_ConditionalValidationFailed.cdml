@@ -1,0 +1,15 @@
+config:
+  serviceType: TCG
+  verID: 01
+  productRelease: 12
+  description: ""
+  email: ""
+  orgID: "NSWPS"
+  domainID: CLOUD
+  solnID: SOL
+  productHierarchy: ""
+  servicesBLHierarchy: ""
+  supportUrls:
+    - ""
+    - ""
+  reusable: FALSE

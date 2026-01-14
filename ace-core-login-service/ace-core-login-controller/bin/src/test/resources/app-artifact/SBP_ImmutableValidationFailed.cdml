@@ -1,0 +1,51 @@
+scm:
+  toolRequired: YESSS
+  reusabilityLevel: Reusability at Product Level
+  gerrit: 
+      tool: gerrit
+      roles:
+        - Developers
+        - Config_Mgmt
+        - Read-Only
+        - Reviewers
+      defaultRoles:
+        - Config-Mgmt: gdcgerritservice,cloud-jenkins
+        - Developers: null
+        - Read-Only: null
+        - Reviewers: null
+      repository:
+        references:
+          - name: refs/*
+            owner:
+              - "Config-Mgmt"
+            read:
+              - "Read-Onlys"
+          - name: refs/for/*
+            read:
+              - "Config-Mgmt"
+            push:
+              - "Config-Mgmt"
+            labelCodeReview:
+              - "Reviewers"
+          - name: refs/for/refs/*
+            push:
+              - "Developers"
+            pushMerge:
+              - "Developers"
+          - name: refs/heads/*
+            read:
+              - "Config-Mgmt"
+            push:
+              - "Config-Mgmt"
+            labelCodeReview:
+              - "Developers"
+          - name: refs/meta/config
+            read:
+              - "Developers"
+  gitlab:
+      tool: Gitlab
+      roles:
+        - Developers
+        - Admin
+        - Maintainer
+        - Guest/Reporter

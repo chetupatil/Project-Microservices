@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>ACENG.ACENGNOKACEAUTAUT.com.nokia.ace.core</groupId>
+		<artifactId>ace-core</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>ACENG.ACENGNOKACEAUTAUT.com.nokia.ace.core.login</groupId>
+	<artifactId>ace-core-login-service</artifactId>
+	<name>ace-core-login-service</name>
+	<url>http://maven.apache.org</url>
+	<packaging>pom</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<modules>
+		<module>ace-core-login-data</module>
+		<module>ace-core-login-business</module>
+		<module>ace-core-login-controller</module>
+		<module>ace-core-login-server</module>
+	</modules>
+</project>
