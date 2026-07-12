@@ -2,6 +2,7 @@ package com.customer_service.customer_service.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -25,13 +26,13 @@ public class CustomerServiceImp implements CustomerService {
 
 	@Autowired
 	private CustomerRepository custRepo;
-	
+
 
 	@Autowired
 	private KafkaTemplate<String, Object> kafkaTemplate;
-	
-	
-	
+
+
+
 	@Value("${kafka.topic-name}")
 	private String topicName;
 
@@ -40,14 +41,14 @@ public class CustomerServiceImp implements CustomerService {
 		List<CustomerResponseDto> customers = new ArrayList<>();
 		try {
 			List<CustomerModel> custModel = custRepo.findAll();
-	
+
 			//Function<CustomerModel,CustomerModel> f = t -> t.setCountry(t.getCountry().toUpperCase());
-			
-			
+
+
 			custModel = custModel.stream()
 					.filter(t -> t.getCountry().equals("Australia"))
 					.collect(Collectors.toList());
-			
+
 
 			if(!CollectionUtils.isEmpty(custModel)) {
 				for(CustomerModel cust : custModel) {
@@ -68,8 +69,8 @@ public class CustomerServiceImp implements CustomerService {
 					customers.add(customer);
 				}
 			}
-			
-			
+
+
 
 
 		}catch(Exception e) {
@@ -85,21 +86,21 @@ public class CustomerServiceImp implements CustomerService {
 		CustomerResponseDto resDto = new CustomerResponseDto();
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
-//			CustomerModel model = new CustomerModel();
-//			model.setAddressLine1(custDto.getAddressLine1());
-//			model.setAddressLine2(custDto.getAddressLine2());
-//			model.setCity(custDto.getCity());
-//			model.setContactFirstName(custDto.getContactFirstName());
-//			model.setContactLastName(custDto.getContactLastName());
-//			model.setCountry(custDto.getCountry());
-//			model.setCustomerName(custDto.getCustomerName());
-//			model.setCustomerNumber(801);
-//			model.setCreditLimit(0);
-//			model.setPhone(custDto.getPhone());
-//			model.setPostalCode(custDto.getPostalCode());
-//			model.setSalesRepEmployeeNumber(0);
-//			model.setState(custDto.getState());
-//			CustomerModel modelRes = custRepo.save(model);
+			//			CustomerModel model = new CustomerModel();
+			//			model.setAddressLine1(custDto.getAddressLine1());
+			//			model.setAddressLine2(custDto.getAddressLine2());
+			//			model.setCity(custDto.getCity());
+			//			model.setContactFirstName(custDto.getContactFirstName());
+			//			model.setContactLastName(custDto.getContactLastName());
+			//			model.setCountry(custDto.getCountry());
+			//			model.setCustomerName(custDto.getCustomerName());
+			//			model.setCustomerNumber(801);
+			//			model.setCreditLimit(0);
+			//			model.setPhone(custDto.getPhone());
+			//			model.setPostalCode(custDto.getPostalCode());
+			//			model.setSalesRepEmployeeNumber(0);
+			//			model.setState(custDto.getState());
+			//			CustomerModel modelRes = custRepo.save(model);
 			CustomerModel modelRes = new CustomerModel();
 			if(modelRes!=null) {}
 			String message = " Created new customer : "+objectMapper.writeValueAsString(custDto);
@@ -109,7 +110,7 @@ public class CustomerServiceImp implements CustomerService {
 		}
 		return resDto;
 	}
-	
+
 	public void notifyToCustomerUsingKafka(String message) {
 		kafkaTemplate.send(topicName,message,message);
 	}
@@ -122,4 +123,20 @@ public class CustomerServiceImp implements CustomerService {
 		}
 		return a + b;
 	}
+
+
+	public String getDataService() throws RuntimeException {
+		
+			int a = 7;
+			if(a == 7) {
+				throw new RuntimeException("Service failed");
+			}
+
+		
+		return "Service Data";
+	}
+	
+	
+
+
 }

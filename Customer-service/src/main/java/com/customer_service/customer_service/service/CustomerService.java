@@ -12,6 +12,8 @@ public interface CustomerService {
 	
 	public CustomerResponseDto createNewCustomer(CustomerRequestDto custDto);
 	
+	public String getDataService() throws RuntimeException;
+	
 	
 	public Integer addTwo(Integer a, Integer b);
 
